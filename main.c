@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:01:05 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/02 19:59:05 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/03 21:16:07 by smorin42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(int ac, char **av)
 		check_content(&games);
 		ft_win_init(&games);
 		init_image(&games);
-		mlx_hook(games.win_ptr, KeyPress, KeyPressMask, &controls_working, &games);
+		mlx_hook(games.win_ptr, KeyRelease, KeyReleaseMask, &controls_working, &games);
 		mlx_loop(games.mlx_ptr);
 	}
 	if (ac == 1)
