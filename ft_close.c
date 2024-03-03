@@ -6,13 +6,13 @@
 /*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:30:25 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/03 21:18:16 by smorin42         ###   ########.fr       */
+/*   Updated: 2024/03/03 21:39:03 by smorin42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	right_move(t_map *games, int i, int j)
+static int right_move(t_map *games, int i, int j)
 {
 	if (games->maps[j][i] == 'E')
 	{
@@ -39,34 +39,34 @@ static int	right_move(t_map *games, int i, int j)
 	return (1);
 }
 
-static int	keyboard_w_s(t_map *games, int movement)
+static int keyboard_w_s(t_map *games, int movement)
 {
-	int	i;
-	int	j;
-	int	k;
+	int i;
+	int j;
+	int k;
 
 	i = games->px_x;
 	j = games->py_y;
-	ft_printf("%i / %i / %c \n", i, j, games->maps[j][i]);
+	ft_printf("Y = %i / X = %i / %c \n", j, i, games->maps[j][i]);
 	ft_putendl_fd("DEBUG 1", 1);
 	if (movement == XK_w)
 	{
 		ft_putendl_fd("DEBUG 2", 1);
 		j--;
-		ft_printf("%i / %i / %c \n", i, j, games->maps[j][i]);
+		ft_printf("Y = %i / X = %i / %c \n", j, i, games->maps[j][i]);
 		if (games->map[j][i] == '1')
 		{
 			ft_putendl_fd("DEBUG 3", 1);
 			return (0);
 		}
-			
+		ft_putendl_fd("DEBUG 3,5", 1);
 		k = right_move(games, i, j);
 		if (!k)
 		{
 			ft_putendl_fd("DEBUG 4", 1);
 			return (0);
 		}
-			
+
 		games->map[j + 1][i] = '0';
 	}
 	else if (movement == XK_s)
@@ -83,11 +83,11 @@ static int	keyboard_w_s(t_map *games, int movement)
 	printf("Collectables Left: %i\n", games->accessible_collectibles);
 	return (1);
 }
-static int	keyboard_a_d(t_map *games, int movement)
+static int keyboard_a_d(t_map *games, int movement)
 {
-	int	i;
-	int	j;
-	int	k;
+	int i;
+	int j;
+	int k;
 
 	i = games->px_x;
 	j = games->py_y;
@@ -116,9 +116,9 @@ static int	keyboard_a_d(t_map *games, int movement)
 	return (1);
 }
 
-int	controls_working(int command, t_map *games)
+int controls_working(int command, t_map *games)
 {
-	int	works;
+	int works;
 
 	if (command == XK_Escape)
 		exit_point(games);
@@ -135,9 +135,9 @@ int	controls_working(int command, t_map *games)
 	return (1);
 }
 
-int	exit_point(t_map *games)
+int exit_point(t_map *games)
 {
-	int	line;
+	int line;
 
 	line = 0;
 	if (games->win_ptr)

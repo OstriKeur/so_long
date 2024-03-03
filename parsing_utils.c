@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:35:57 by smorin42          #+#    #+#             */
-/*   Updated: 2024/03/01 16:29:54 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/03 21:26:37 by smorin42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void	check_start(t_map *games)
 		{
 			if (games->maps[x][y] == 'P')
 			{
-				games->px_x = x;
-				games->py_y = y;
+				games->py_y = x;
+				games->px_x = y;
 				games->start_found++;
 			}
 			y++;
