@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:20:12 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/02 19:54:31 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/04 17:57:57 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,6 @@
 # define WIN_NAME "so_long"
 # define TILE_SIZE 32
 
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-
-# define KEY_UP 65362
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
-# define KEY_DOWN 65364
-
-# define KEY_Q 113
-# define KEY_ESC 65307
-
-# define FRONT 1
-# define LEFT 2
-# define RIGHT 3
-# define BACK 4
-
-# define GREEN "\033[0;32m"
-# define RED "\033[1;31m"
-# define GREY "\033[0;90m"
-# define CYAN "\033[1;96m"
-# define RESET "\033[0m"
-
 typedef struct s_imgs
 {
 	void	*COLLECTS;
@@ -91,11 +67,13 @@ typedef struct s_map
 	int		exit_accessible;
 	int		px_x;
 	int		py_y;
+	int		fd;
+	char	*lines;
+	char	*buff;
 	int		items_found;
 	int		items_nbr;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	// void	*img;
 }			t_map;
 
 /// Parsing
@@ -123,7 +101,7 @@ void		ft_win_init(t_map *games);
 void		ft_xpms(t_map *games);
 void		ft_put(t_map *games, void *imgs, int x, int y);
 void		init_image(t_map *games);
-int	controls_working(int command, t_map *games);
-int	exit_point(t_map *games);
+int			controls_working(int command, t_map *games);
+int			exit_point(t_map *games);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:35:57 by smorin42          #+#    #+#             */
-/*   Updated: 2024/03/03 21:26:37 by smorin42         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:06:27 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	check_closed(t_map *games)
 		x++;
 	}
 }
+
 void	check_rectangle(t_map *games)
 {
 	int	i;

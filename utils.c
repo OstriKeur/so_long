@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:52:26 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/02 19:43:14 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/04 18:10:49 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init(t_map *games, char *map_file_name)
 	games->accessible_collectibles = 0;
 	games->exit_accessible = FALSE;
 }
+
 void	flood_fill(t_map *games, int x, int y)
 {
 	if (x < 0 || x >= games->lenght || y < 0 || y >= games->height
@@ -45,7 +46,6 @@ void	flood_fill(t_map *games, int x, int y)
 	if (games->map[y][x] == 'C')
 		games->items_found++;
 	games->map[y][x] = '1';
-	games->moves++;
 	flood_fill(games, x + 1, y);
 	flood_fill(games, x - 1, y);
 	flood_fill(games, x, y + 1);
@@ -60,7 +60,7 @@ int	ft_copy_map(t_map *games)
 	games->items_found = 0;
 	games->exit_found = 0;
 	games->map = ft_calloc((games->height + 1), sizeof(char *));
-	if (!games->maps)
+	if (!games->map)
 		return (0);
 	while (i < games->height)
 	{
@@ -74,6 +74,7 @@ int	ft_copy_map(t_map *games)
 	}
 	return (1);
 }
+
 void	ft_check_path(t_map *games, int x, int y)
 {
 	games->px_x = x;

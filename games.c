@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   games.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:00:27 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/03 19:19:18 by smorin42         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:05:31 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,31 @@ void	ft_win_init(t_map *games)
 	if (!(games->win_ptr))
 		free_all_and_error(games, "ERROOR");
 }
+
 void	ft_xpms(t_map *games)
 {
-
-	games->imgs.COLLECTS = mlx_xpm_file_to_image(games->mlx_ptr, "./textures/Boss.xpm",
-			&(games->imgs.l), &(games->imgs.h));
-	games->imgs.EXITT = mlx_xpm_file_to_image(games->mlx_ptr, "./textures/Female.xpm",
-			&(games->imgs.l), &(games->imgs.h));
-	games->imgs.FLOORR = mlx_xpm_file_to_image(games->mlx_ptr, "./textures/Grass.xpm",
-			&(games->imgs.l), &(games->imgs.h));
-	games->imgs.PLAYER = mlx_xpm_file_to_image(games->mlx_ptr, "./textures/Player.xpm",
-			&(games->imgs.l), &(games->imgs.h));
-	games->imgs.WALLS = mlx_xpm_file_to_image(games->mlx_ptr, "./textures/Wall.xpm",
-			&(games->imgs.l), &(games->imgs.h));
+	games->imgs.COLLECTS = mlx_xpm_file_to_image(games->mlx_ptr,
+			"./textures/Boss.xpm", &(games->imgs.l), &(games->imgs.h));
+	games->imgs.EXITT = mlx_xpm_file_to_image(games->mlx_ptr,
+			"./textures/Female.xpm", &(games->imgs.l), &(games->imgs.h));
+	games->imgs.FLOORR = mlx_xpm_file_to_image(games->mlx_ptr,
+			"./textures/Grass.xpm", &(games->imgs.l), &(games->imgs.h));
+	games->imgs.PLAYER = mlx_xpm_file_to_image(games->mlx_ptr,
+			"./textures/Player.xpm", &(games->imgs.l), &(games->imgs.h));
+	games->imgs.WALLS = mlx_xpm_file_to_image(games->mlx_ptr,
+			"./textures/Wall.xpm", &(games->imgs.l), &(games->imgs.h));
 }
+
 void	ft_put(t_map *games, void *imgs, int x, int y)
 {
 	mlx_put_image_to_window(games->mlx_ptr, games->win_ptr, imgs, x * 32, y
 		* 32);
 }
+
 void	init_image(t_map *games)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -68,10 +70,4 @@ void	init_image(t_map *games)
 		}
 		y++;
 	}
-	// while (games->map[y])
-	// {
-	// 	ft_printf("%s\n", games->map[y]);
-	// 	y++;
-	// }
-	// exit(1);
 }

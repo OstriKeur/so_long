@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorin42 <smorin42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:01:05 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/03 21:16:07 by smorin42         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:08:20 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void check_content(t_map *games)
+void	check_content(t_map *games)
 {
 	((check_rectangle(games)), (check_start(games)));
 	((check_closed(games)), (check_map_exit(games)));
@@ -24,9 +24,9 @@ void check_content(t_map *games)
 		free_all_and_error(games, "NOT COLLECT ALL ITEM");
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_map games;
+	t_map	games;
 
 	if (ac == 2)
 	{
@@ -36,7 +36,9 @@ int main(int ac, char **av)
 		check_content(&games);
 		ft_win_init(&games);
 		init_image(&games);
-		mlx_hook(games.win_ptr, KeyRelease, KeyReleaseMask, &controls_working, &games);
+		mlx_hook(games.win_ptr, KeyRelease, KeyReleaseMask, &controls_working,
+			&games);
+		mlx_hook(games.win_ptr, DestroyNotify, 0L, &exit_point, &games);
 		mlx_loop(games.mlx_ptr);
 	}
 	if (ac == 1)
