@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:00:27 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 18:05:31 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/05 12:00:09 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,26 @@ void	ft_win_init(t_map *games)
 
 void	ft_xpms(t_map *games)
 {
-	games->imgs.COLLECTS = mlx_xpm_file_to_image(games->mlx_ptr,
+	games->imgs.collect = mlx_xpm_file_to_image(games->mlx_ptr,
 			"./textures/Boss.xpm", &(games->imgs.l), &(games->imgs.h));
-	games->imgs.EXITT = mlx_xpm_file_to_image(games->mlx_ptr,
+	if (!games->imgs.collect)
+		exit_point(games);
+	games->imgs.exitt = mlx_xpm_file_to_image(games->mlx_ptr,
 			"./textures/Female.xpm", &(games->imgs.l), &(games->imgs.h));
-	games->imgs.FLOORR = mlx_xpm_file_to_image(games->mlx_ptr,
+	if (!games->imgs.exitt)
+		exit_point(games);
+	games->imgs.floorr = mlx_xpm_file_to_image(games->mlx_ptr,
 			"./textures/Grass.xpm", &(games->imgs.l), &(games->imgs.h));
-	games->imgs.PLAYER = mlx_xpm_file_to_image(games->mlx_ptr,
+	if (!games->imgs.floorr)
+		exit_point(games);
+	games->imgs.player = mlx_xpm_file_to_image(games->mlx_ptr,
 			"./textures/Player.xpm", &(games->imgs.l), &(games->imgs.h));
-	games->imgs.WALLS = mlx_xpm_file_to_image(games->mlx_ptr,
+	if (!games->imgs.player)
+		exit_point(games);
+	games->imgs.walls = mlx_xpm_file_to_image(games->mlx_ptr,
 			"./textures/Wall.xpm", &(games->imgs.l), &(games->imgs.h));
+	if (!games->imgs.walls)
+		exit_point(games);
 }
 
 void	ft_put(t_map *games, void *imgs, int x, int y)
@@ -57,15 +67,15 @@ void	init_image(t_map *games)
 		while (games->maps[y][x])
 		{
 			if (games->maps[y][x] == '1')
-				ft_put(games, games->imgs.WALLS, x, y);
+				ft_put(games, games->imgs.walls, x, y);
 			else if (games->maps[y][x] == '0')
-				ft_put(games, games->imgs.FLOORR, x, y);
+				ft_put(games, games->imgs.floorr, x, y);
 			else if (games->maps[y][x] == 'P')
-				ft_put(games, games->imgs.PLAYER, x, y);
+				ft_put(games, games->imgs.player, x, y);
 			else if (games->maps[y][x] == 'E')
-				ft_put(games, games->imgs.EXITT, x, y);
+				ft_put(games, games->imgs.exitt, x, y);
 			else if (games->maps[y][x] == 'C')
-				ft_put(games, games->imgs.COLLECTS, x, y);
+				ft_put(games, games->imgs.collect, x, y);
 			x++;
 		}
 		y++;

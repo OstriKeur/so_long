@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:20:12 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 17:57:57 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/04 19:12:03 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@
 # include <sys/uio.h>
 # include <unistd.h>
 
-# define WALL '1'
-# define FLOOR '0'
-# define START 'P'
-# define EXIT 'E'
-# define COLLECT 'C'
 # ifndef SIZE
 #  define SIZE 50
 # endif
@@ -40,11 +35,11 @@
 
 typedef struct s_imgs
 {
-	void	*COLLECTS;
-	void	*WALLS;
-	void	*PLAYER;
-	void	*FLOORR;
-	void	*EXITT;
+	void	*collect;
+	void	*walls;
+	void	*player;
+	void	*floorr;
+	void	*exitt;
 	int		h;
 	int		l;
 }			t_imgs;
@@ -103,5 +98,7 @@ void		ft_put(t_map *games, void *imgs, int x, int y);
 void		init_image(t_map *games);
 int			controls_working(int command, t_map *games);
 int			exit_point(t_map *games);
+
+
 
 #endif

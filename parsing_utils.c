@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:35:57 by smorin42          #+#    #+#             */
-/*   Updated: 2024/03/04 18:06:27 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/04 18:34:07 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	check_closed(t_map *games)
 			while (games->maps[x][y])
 			{
 				if (games->maps[x][y++] != '1')
-					free_all_and_error(games, "Error\nMap is not closed");
+					free_all_and_error(games, "Map is not closed");
 			}
 		}
 		else
 		{
 			if (games->maps[x][0] != '1' || games->maps[x][games->lenght
 				- 1] != '1')
-				free_all_and_error(games, "Error\nMap is not closed");
+				free_all_and_error(games, "Map is not closed");
 		}
 		x++;
 	}
@@ -72,13 +72,13 @@ void	check_map_exit(t_map *so_long)
 			if (so_long->maps[i][j] != 'E' && so_long->maps[i][j] != '0'
 				&& so_long->maps[i][j] != '1' && so_long->maps[i][j] != 'C'
 				&& so_long->maps[i][j] != 'P')
-				free_all_and_error(so_long, "Error\nMap have wrong char");
+				free_all_and_error(so_long, "Map have wrong char");
 			j++;
 		}
 		i++;
 	}
 	if (exit_flag != 1)
-		free_all_and_error(so_long, "Error\nMap doesn't have exactly 1 exit");
+		free_all_and_error(so_long, "Map doesn't have exactly 1 exit");
 }
 
 void	check_map_item(t_map *so_long)
@@ -105,7 +105,7 @@ void	check_map_item(t_map *so_long)
 		i++;
 	}
 	if (item_flag < 1)
-		free_all_and_error(so_long, "Error\nMap doesn't have at least 1 item");
+		free_all_and_error(so_long, "Map doesn't have at least 1 item");
 }
 
 void	check_start(t_map *games)

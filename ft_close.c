@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:30:25 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 18:10:37 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/05 12:46:06 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,25 @@ int	exit_point(t_map *games)
 	int	line;
 
 	line = 0;
-	if (games->win_ptr)
-		mlx_destroy_window(games->mlx_ptr, games->win_ptr);
+	if (games)
+	{
+		if (games->imgs.collect != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs.collect);
+		if (games->imgs.player != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs.player);
+		if (games->imgs.exitt != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs.exitt);
+		if (games->imgs.walls != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs.walls);
+		if (games->imgs.floorr != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs.floorr);
+		if (games->win_ptr != NULL)
+			mlx_destroy_window(games->mlx_ptr, games->win_ptr);
+	}
 	free(games->mlx_ptr);
-	while (line < games->height - 1)
-		free(games->maps[line++]);
+	// while (line < games->height - 1)
+	// 	free(games->maps[line++]);
+	ft_free_double_tab(&games->maps);
 	free(games->maps);
 	exit(0);
 }

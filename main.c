@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:01:05 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 18:08:20 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/05 12:22:57 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	main(int ac, char **av)
 		map_error("NOT MAP FOUND");
 	else if (ac > 2)
 		map_error("TOO MANY ARGUMENTS");
+	return (free_all_and_error(&games, NULL), 0);
 }
