@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:52:26 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 18:10:49 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/07 18:50:46 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,24 @@ void	init(t_map *games, char *map_file_name)
 
 void	flood_fill(t_map *games, int x, int y)
 {
-	if (x < 0 || x >= games->lenght || y < 0 || y >= games->height
-		|| games->map[y][x] == '1')
+	if (games->map[y][x] == '1')
 		return ;
 	if (games->map[y][x] == 'E')
+	{
 		games->exit_found = 1;
+		return ;
+	}
 	if (games->map[y][x] == 'C')
 		games->items_found++;
 	games->map[y][x] = '1';
-	flood_fill(games, x + 1, y);
-	flood_fill(games, x - 1, y);
-	flood_fill(games, x, y + 1);
-	flood_fill(games, x, y - 1);
+	if (games->map[y][x + 1] != '1')
+		flood_fill(games, x + 1, y);
+	if (games->map[y][x - 1] != '1')
+		flood_fill(games, x - 1, y);
+	if (games->map[y + 1][x] != '1')
+		flood_fill(games, x, y + 1);
+	if (games->map[y - 1][x] != '1')
+		flood_fill(games, x, y - 1);
 }
 
 int	ft_copy_map(t_map *games)
@@ -82,6 +88,7 @@ void	ft_check_path(t_map *games, int x, int y)
 	if (!ft_copy_map(games))
 		free_all_and_error(games, "ERROR");
 	flood_fill(games, games->px_x, games->py_y);
+	ft_free_double_tab(&games->map);
 	if (games->exit_found != 1 || games->items_found != games->items_nbr)
 	{
 		free_all(games);

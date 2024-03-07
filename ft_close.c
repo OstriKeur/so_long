@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:30:25 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/05 12:46:06 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/07 15:12:56 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	right_move(t_map *games, int i, int j)
 {
 	if (games->maps[j][i] == 'E')
 	{
-		if (games->accessible_collectibles == 0)
+		if (games->accessible_collectibles != games->items_nbr)
 			return (0);
 		ft_printf("\nYou Have Won, Congrats!\n");
 		exit_point(games);
@@ -33,7 +33,7 @@ static int	right_move(t_map *games, int i, int j)
 		games->maps[j][i] = 'P';
 		games->px_x = i;
 		games->py_y = j;
-		games->accessible_collectibles--;
+		games->accessible_collectibles++;
 		games->moves++;
 	}
 	return (1);
@@ -101,37 +101,23 @@ int	controls_working(int command, t_map *games)
 		works = keyboard_a_d(games, command);
 	if (command == XK_d)
 		works = keyboard_a_d(games, command);
-	printf("Steps Taken: %i\n", games->moves);
-	printf("Collectables Remaining: %i\n", games->accessible_collectibles);
 	if (works)
 		init_image(games);
+	ft_printf("Steps Taken: %i\n", games->moves);
+	ft_printf("Collectables Collected: %i\n", games->accessible_collectibles);
 	return (1);
 }
 
 int	exit_point(t_map *games)
 {
-	int	line;
-
-	line = 0;
-	if (games)
-	{
-		if (games->imgs.collect != NULL)
-			mlx_destroy_image(games->mlx_ptr, games->imgs.collect);
-		if (games->imgs.player != NULL)
-			mlx_destroy_image(games->mlx_ptr, games->imgs.player);
-		if (games->imgs.exitt != NULL)
-			mlx_destroy_image(games->mlx_ptr, games->imgs.exitt);
-		if (games->imgs.walls != NULL)
-			mlx_destroy_image(games->mlx_ptr, games->imgs.walls);
-		if (games->imgs.floorr != NULL)
-			mlx_destroy_image(games->mlx_ptr, games->imgs.floorr);
-		if (games->win_ptr != NULL)
-			mlx_destroy_window(games->mlx_ptr, games->win_ptr);
-	}
-	free(games->mlx_ptr);
-	// while (line < games->height - 1)
-	// 	free(games->maps[line++]);
+	exit_map(games);
+	if (games->win_ptr != NULL)
+		mlx_destroy_window(games->mlx_ptr, games->win_ptr);
 	ft_free_double_tab(&games->maps);
-	free(games->maps);
+	if (games->mlx_ptr)
+	{
+		mlx_destroy_display(games->mlx_ptr);
+		free(games->mlx_ptr);
+	}
 	exit(0);
 }

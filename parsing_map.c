@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:28:54 by smorin42          #+#    #+#             */
-/*   Updated: 2024/03/05 14:17:47 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/07 15:13:32 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ static void	parsing(t_map *games)
 	games->maps = ft_split(games->lines, '\n');
 	free(games->buff);
 	free(games->lines);
+	close(games->fd);
 	if (!games->maps)
 		free_all_and_error(games, "MALLOC ERROR");
 	if (!games->maps[0])
 		free_all_and_error(games, "TOO MUCH LINES");
-	close(games->fd);
 	while (games->maps[height] != NULL)
 		height++;
 	games->height = height;
@@ -80,4 +80,22 @@ void	parsing_map(t_map *games)
 	if (games->fd < 0)
 		map_error("NO MAP SO SORRY BRO");
 	parsing(games);
+}
+
+int	exit_map(t_map *games)
+{
+	if (games)
+	{
+		if (games->imgs->collect != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs->collect);
+		if (games->imgs->player != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs->player);
+		if (games->imgs->exitt != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs->exitt);
+		if (games->imgs->walls != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs->walls);
+		if (games->imgs->floorr != NULL)
+			mlx_destroy_image(games->mlx_ptr, games->imgs->floorr);
+	}
+	return (0);
 }

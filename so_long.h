@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:20:12 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/04 19:12:03 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:22:50 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_imgs
 
 typedef struct s_map
 {
-	t_imgs	imgs;
+	t_imgs	*imgs;
 	int		height;
 	int		lenght;
 	int		exit;
@@ -84,6 +84,7 @@ void		check_map_exit(t_map *so_long);
 void		check_map_item(t_map *so_long);
 void		ft_check_path(t_map *games, int x, int y);
 int			ft_copy_map(t_map *games);
+void		group_all(t_map *games);
 
 /// Free
 void		map_error(char *s);
@@ -98,7 +99,6 @@ void		ft_put(t_map *games, void *imgs, int x, int y);
 void		init_image(t_map *games);
 int			controls_working(int command, t_map *games);
 int			exit_point(t_map *games);
-
-
+int			exit_map(t_map *games);
 
 #endif

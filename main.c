@@ -6,7 +6,7 @@
 /*   By: smorin <smorin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:01:05 by smorin            #+#    #+#             */
-/*   Updated: 2024/03/05 12:22:57 by smorin           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:22:41 by smorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,19 @@ void	check_content(t_map *games)
 int	main(int ac, char **av)
 {
 	t_map	games;
+	t_imgs	imgs;
 
 	if (ac == 2)
 	{
+		games.imgs = &imgs;
+		games.imgs->collect = 0;
+		games.imgs->player = 0;
+		games.imgs->walls = 0;
+		games.imgs->floorr = 0;
+		games.imgs->exitt = 0;
 		check_name(av[1]);
 		init(&games, av[1]);
-		parsing_map(&games);
-		check_content(&games);
-		ft_win_init(&games);
+		group_all(&games);
 		init_image(&games);
 		mlx_hook(games.win_ptr, KeyRelease, KeyReleaseMask, &controls_working,
 			&games);
@@ -46,4 +51,12 @@ int	main(int ac, char **av)
 	else if (ac > 2)
 		map_error("TOO MANY ARGUMENTS");
 	return (free_all_and_error(&games, NULL), 0);
+}
+
+void	group_all(t_map *games)
+{
+	parsing_map(games);
+	check_content(games);
+	ft_win_init(games);
+	ft_xpms(games);
 }
