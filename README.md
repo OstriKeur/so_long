@@ -8,7 +8,7 @@ So_long est un projet de jeu vidéo 2D développé avec la bibliothèque MiniLib
 
 Ce projet m'a permis de découvrir la programmation graphique, la gestion d'événements, et la création d'un jeu complet avec sprites, collisions, et mécaniques de gameplay. C'est un excellent projet pour apprendre à travailler avec des bibliothèques graphiques et à structurer un projet de jeu.
 
-## 🎮 Gameplay
+## Gameplay
 
 Le joueur contrôle un personnage qui doit :
 - Collecter tous les items (collectibles) sur la carte
@@ -16,7 +16,7 @@ Le joueur contrôle un personnage qui doit :
 - Atteindre la sortie pour gagner
 - Le jeu affiche le nombre de mouvements effectués
 
-## 🚀 Utilisation
+## Utilisation
 
 ### Compilation
 
@@ -38,7 +38,7 @@ make
 - **D / →** : Déplacer vers la droite
 - **ESC** : Quitter le jeu
 
-## 🗺️ Format de carte (.ber)
+## Format de carte (.ber)
 
 La carte est un fichier texte avec les caractères suivants :
 
@@ -63,7 +63,7 @@ La carte est un fichier texte avec les caractères suivants :
 1111111111
 ```
 
-## 📋 Règles de validation
+## Règles de validation
 
 - La carte doit être rectangulaire
 - La carte doit être entourée de murs (1)
@@ -72,54 +72,27 @@ La carte est un fichier texte avec les caractères suivants :
 - Il doit y avoir exactement une sortie (E)
 - La carte doit être jouable (chemin valide)
 
-## 🎨 Fonctionnalités
+## Fonctionnalités
 
-- **Affichage graphique** : Rendu avec MiniLibX
-- **Sprites** : Gestion des textures et images
-- **Mouvement** : Déplacement fluide du joueur
-- **Collisions** : Détection des collisions avec les murs
-- **Collectibles** : Système de collecte d'items
-- **Compteur de mouvements** : Affichage du nombre de pas
-- **Gestion d'erreurs** : Validation de la carte et gestion des erreurs
+- Affichage graphique avec MiniLibX
+- Gestion des textures et images
+- Déplacement fluide du joueur
+- Détection des collisions avec les murs
+- Système de collecte d'items
+- Compteur de mouvements
+- Validation de la carte et gestion des erreurs
 
-## 🎓 Ce que j'ai appris
+## Ce que j'ai appris
 
-- **MiniLibX** : Utilisation de la bibliothèque graphique de 42
-- **Programmation graphique** : Rendu 2D, sprites, textures
-- **Gestion d'événements** : Gestion des touches clavier et fermeture de fenêtre
-- **Parsing** : Lecture et validation de fichiers de configuration (cartes)
-- **Algorithmes de chemin** : Vérification de la jouabilité de la carte
-- **Structure de projet** : Organisation d'un projet de jeu
-- **Gestion mémoire** : Allocation et libération pour les graphiques
-- **Tests** : Validation de cartes et tests de gameplay
+- Utilisation de la bibliothèque graphique MiniLibX
+- Rendu 2D, sprites, textures
+- Gestion des touches clavier et fermeture de fenêtre
+- Lecture et validation de fichiers de configuration (cartes)
+- Vérification de la jouabilité de la carte
+- Organisation d'un projet de jeu
+- Allocation et libération pour les graphiques
 
-## 💡 Concepts clés
-
-### MiniLibX
-
-MiniLibX est la bibliothèque graphique de 42 qui permet :
-- Créer des fenêtres
-- Afficher des images et textures
-- Gérer les événements clavier/souris
-- Gérer les boucles de jeu
-
-### Parsing de carte
-
-Le parsing consiste à :
-- Lire le fichier .ber ligne par ligne
-- Valider le format et les règles
-- Créer une représentation en mémoire
-- Vérifier la jouabilité
-
-### Gestion des collisions
-
-Les collisions sont gérées en vérifiant :
-- La position suivante du joueur
-- Si cette position contient un mur
-- Si cette position contient un collectible
-- Si cette position est la sortie
-
-## 🔧 Structure du projet
+## Structure du projet
 
 ```
 so_long/
@@ -140,15 +113,7 @@ so_long/
 └── README.md
 ```
 
-## 🎯 Défis
-
-- **Performance** : Rendu fluide à 60 FPS
-- **Gestion mémoire** : Pas de fuites mémoire avec MiniLibX
-- **Validation** : Parsing robuste des cartes
-- **UX** : Contrôles réactifs et intuitifs
-- **Erreurs** : Gestion propre des erreurs
-
-## 📝 Notes
+## Notes
 
 - Le projet utilise MiniLibX qui est spécifique à macOS/Linux
 - Les textures doivent être au format XPM
